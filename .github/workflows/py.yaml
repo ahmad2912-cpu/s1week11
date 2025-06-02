@@ -18,8 +18,14 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Repo Information
-      run: 
+      run: |
         git branch
         echo "Event Name :${{github.actor}}"
         echo "Event Name :${{github.repositary}}"
         echo "Event Name :${{github.event}}"
+
+    - name: Lint HTML Files
+      run: npx htmlhint "**/*.html"
+    
+    - name: Lint CSS Files
+      run: npx stylelint "**/*.css"
